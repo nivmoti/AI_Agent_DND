@@ -31,6 +31,20 @@ SRD_CC_v5.2.1.pdf        # Original SRD PDF (not committed publicly)
 5. Ingest the SRD: `python -m src.ingest`
 6. Chat: `python -m src.chat --session mycampaign`
 
+### FastAPI Server
+Run an HTTP server:
+```
+uvicorn src.api:app --reload --port 8000
+```
+
+Test endpoints (PowerShell):
+```
+curl -X GET http://localhost:8000/health
+curl -X POST http://localhost:8000/chat -H "Content-Type: application/json" -d '{"session":"demo","message":"How does the grappled condition work?"}'
+curl -X POST http://localhost:8000/remember -H "Content-Type: application/json" -d '{"session":"demo","fact":"The party travels with a wolf companion."}'
+curl -X GET "http://localhost:8000/memory?session=demo"
+```
+
 Inside chat you can:
 - Ask rules questions.
 - Tell the agent to remember facts: `Remember this: The party hired a guide named Lira.`

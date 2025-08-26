@@ -9,3 +9,5 @@ tiktoken>=0.7.0
 pdfminer.six>=20240706
 rich>=13.7.1
 orjson>=3.10.5
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
